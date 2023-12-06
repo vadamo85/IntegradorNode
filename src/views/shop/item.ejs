@@ -1,0 +1,176 @@
+<%- contentFor('body') %> 
+
+    <main>
+      <!-- MAIN ITEM START -->
+      <section class="collection container">
+        <picture>
+          <img
+            src="../../img/star-wars/baby-yoda-1.webp"
+            alt="Figura coleccionable Funko Pop de Grogu de la serie The Mandalorian."
+          />
+        </picture>
+        <article class="item-collection__content">
+          <p class="item-collection__licence">Star Wars</p>
+          <h3 class="item-collection__title">Baby Yoda Blueball</h3>
+          <p class="item-collection__text">
+            Figura coleccionable de Baby Yoda (Grogu) - The Mandalorian Saga,
+            edición limitada.
+          </p>
+          <!-- MODIFICAR ESTILOS AQUÍ -->
+          <p class="item-collection__price">$ 1799,99</p>
+
+          <div class="item-flex-layout__buttons">
+            <div class="item-collection__input">
+              <div class="item-collection__input-number">
+                <input
+                  class="item-collection__input-number-count"
+                  type="number"
+                  name="add-more"
+                  value="0"
+                  min="0"
+                  id="quantity"
+                  readonly
+                />
+                <div class="item-collection__input-number-button">
+                  <button
+                    class="item-collection__input-number-button-control"
+                    id="add-product"
+                  >
+                    +
+                  </button>
+                  <button
+                    class="item-collection__input-number-button-control"
+                    id="less-product"
+                  >
+                    -
+                  </button>
+                </div>
+              </div>
+            </div>
+            <a class="item-resumen-button" href="./shopping-cart.html"
+              >Agregar al Carrito</a
+            >
+          </div>
+
+          <div class="item-flex-layout">
+            <a href="../../pages/shop/shopping-cart.html"
+              >Ver métodos de pago
+            </a>
+            <p class="item-collection__promotion">- 3 cuotas sin interés</p>
+          </div>
+
+          <!-- MODIFICAR ESTILOS AQUÍ ^^^^^^ -->
+        </article>
+      </section>
+
+      <!-- MAIN RELATED ITEMS START -->
+      <section class="slider container glide">
+        <h2 class="slider__title">Últimos Lanzamientos</h2>
+        <div class="glide__track" data-glide-el="track">
+          <ul class="slider__items glide__slides">
+            <li class="slider__item glide__slide">
+              <article class="card-item">
+                <a class="card-item__link" href="../shop/shop.html">
+                  <picture class="card-item__cover">
+                    <span class="card-item__tag">Nuevo</span>
+                    <img
+                      class="card-item__img-front"
+                      src="../../img/star-wars/trooper-1.webp"
+                      alt="Figura coleccionable Funko Pop de un Stormtrooper de la saga de películas de Star Wars."
+                    />
+                    <img
+                      class="card-item__img-back"
+                      src="../../img/star-wars/trooper-box.webp"
+                      alt="Figura coleccionable Funko Pop de un Stormtrooper de la saga de películas de Star Wars en caja."
+                    />
+                  </picture>
+                  <div class="card-item__content">
+                    <p class="card-item__licence">Star Wars</p>
+                    <h4 class="card-item__name">Stormtooper Lightsaber</h4>
+                    <p class="card-item__price">$ 1799,99</p>
+                    <p class="card-item__promotion">3 cuotas sin interés</p>
+                  </div>
+                </a>
+              </article>
+            </li>
+            <li class="slider__item glide__slide">
+              <article class="card-item">
+                <a class="card-item__link" href="../shop/shop.html">
+                  <picture class="card-item__cover">
+                    <span class="card-item__tag">Nuevo</span>
+                    <img
+                      class="card-item__img-front"
+                      src="../../img/pokemon/pidgeotto-1.webp"
+                      alt="Figura coleccionable Funko Pop de Pidgeotto de la serie Pokemon."
+                    />
+                    <img
+                      class="card-item__img-back"
+                      src="../../img/pokemon/pidgeotto-box.webp"
+                      alt="Figura coleccionable Funko Pop de Pidgeotto de la serie Pokemon en caja."
+                    />
+                  </picture>
+                  <div class="card-item__content">
+                    <p class="card-item__licence">Pokemon</p>
+                    <h4 class="card-item__name">Pidgeotto</h4>
+                    <p class="card-item__price">$ 1799,99</p>
+                    <p class="card-item__promotion">3 cuotas sin interés</p>
+                  </div>
+                </a>
+              </article>
+            </li>
+            <li class="slider__item glide__slide">
+              <article class="card-item">
+                <a class="card-item__link" href="../shop/shop.html">
+                  <picture class="card-item__cover">
+                    <span class="card-item__tag">Nuevo</span>
+                    <img
+                      class="card-item__img-front"
+                      src="../../img/harry-potter/luna-1.webp"
+                      alt="Figura coleccionable Funko Pop de Luna Lovegood con una máscara de león de la saga de películas de Harry Potter."
+                    />
+                    <img
+                      class="card-item__img-back"
+                      src="../../img/harry-potter/luna-box.webp"
+                      alt="Figura coleccionable Funko Pop de Luna Lovegood con una máscara de león de la saga de películas de Harry Potter en caja."
+                    />
+                  </picture>
+                  <div class="card-item__content">
+                    <p class="card-item__licence">Harry Potter</p>
+                    <h4 class="card-item__name">Luna Lovegood lion mask</h4>
+                    <p class="card-item__price">$ 1799,99</p>
+                    <p class="card-item__promotion">3 cuotas sin interés</p>
+                  </div>
+                </a>
+              </article>
+            </li>
+          </ul>
+        </div>
+        <div class="glide__arrows" data-glide-el="controls">
+          <button class="glide__arrow glide__arrow--left" data-glide-dir="<">
+            <iconify-icon icon="tabler:chevron-left"></iconify-icon>
+          </button>
+          <button class="glide__arrow glide__arrow--right" data-glide-dir=">">
+            <iconify-icon icon="tabler:chevron-right"></iconify-icon>
+          </button>
+        </div>
+      </section>
+      <!-- MAIN RELATED ITEMS END -->
+    </main>
+
+    <script>
+      var inputCantidad = document.getElementById('quantity');
+      var botonSumar = document.getElementById('add-product');
+      var botonRestar = document.getElementById('less-product');
+    
+      botonSumar.addEventListener('click', function() {
+        
+      inputCantidad.value = parseInt(inputCantidad.value) + 1;
+      });
+    
+      botonRestar.addEventListener('click', function() {
+        
+      var nuevoValor = parseInt(inputCantidad.value) - 1;
+      inputCantidad.value = nuevoValor >= 0 ? nuevoValor : 0;
+      });
+    </script>
+  

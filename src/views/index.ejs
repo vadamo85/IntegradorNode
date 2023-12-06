@@ -1,0 +1,165 @@
+<%- contentFor('body') %>
+    
+
+    <!-- BANNER START -->
+    <section class="banner">
+      <article class="banner__content container">
+        <h3 class="banner__title">Nuevos Ingresos</h3>
+        <p class="banner__text">Descubrí el póximo Funko Pop de tu colección</p>
+        <a class="banner__link" href="./pages/shop/shop.html">SHOP</a>
+      </article>
+    </section>
+    <!-- BANNER END -->
+
+    <!-- MAIN START -->
+    <main>
+      <!-- MAIN SHOPPING ITEMS START -->
+      <section class="collection container">
+        <article class="collection__content">
+          <h3 class="collection__title">Star Wars & The Mandalorian</h3>
+          <p class="collection__text">
+            Disfruta de una saga que sigue agregando personajes a su colección.
+          </p>
+          <a class="collection__link" href="./pages/shop/shop.html"
+            >Ver colección</a
+          >
+        </article>
+        <picture class="collection__cover"
+          ><img
+            src="./img/star-wars/baby-yoda-1.webp"
+            alt="Figura coleccionable Funko Pop de Grogu de la serie The Mandalorian."
+        /></picture>
+      </section>
+
+      <section class="collection container">
+        <article class="collection__content">
+          <h3 class="collection__title">Pokemon Indigo</h3>
+          <p class="collection__text">
+            Atrapa todos los que puedas y disfruta de una colección llena de
+            amigos.
+          </p>
+          <a class="collection__link" href="./pages/shop/shop.html"
+            >Ver colección</a
+          >
+        </article>
+        <picture class="collection__cover"
+          ><img
+            src="./img/pokemon/vulpix-1.webp"
+            alt="Figura coleccionable Funko Pop de Vulpix de la serie Pokemon."
+        /></picture>
+      </section>
+
+      <section class="collection container">
+        <article class="collection__content">
+          <h3 class="collection__title">Harry Potter</h3>
+          <p class="collection__text">
+            Revive los recuerdos de una saga llena de magia y encanto.
+          </p>
+          <a class="collection__link" href="./pages/shop/shop.html"
+            >Ver colección</a
+          >
+        </article>
+        <picture class="collection__cover"
+          ><img
+            src="./img/harry-potter/snape-patronus-1.webp"
+            alt="Figura coleccionable Funko Pop del Patronus de Snape en la saga de películas de Harry Potter."
+        /></picture>
+      </section>
+      <!-- MAIN SHOPPING ITEMS END -->
+
+      <!-- MAIN LASTEST RELEASES START -->
+      <section class="slider container glide">
+        <h2 class="slider__title">Últimos Lanzamientos</h2>
+        <div class="glide__track" data-glide-el="track">
+          <ul class="slider__items glide__slides">
+            <li class="slider__item glide__slide">
+              <article class="card-item">
+                <a class="card-item__link" href="./pages/shop/shop.html">
+                  <picture class="card-item__cover">
+                    <span class="card-item__tag">Nuevo</span>
+                    <img
+                      class="card-item__img-front"
+                      src="./img/star-wars/trooper-1.webp"
+                      alt="Figura coleccionable Funko Pop de un Stormtrooper de la saga de películas de Star Wars."
+                    />
+                    <img
+                      class="card-item__img-back"
+                      src="./img/star-wars/trooper-box.webp"
+                      alt="Figura coleccionable Funko Pop de un Stormtrooper de la saga de películas de Star Wars en caja."
+                    />
+                  </picture>
+                  <div class="card-item__content">
+                    <p class="card-item__licence">Star Wars</p>
+                    <h4 class="card-item__name">Stormtooper Lightsaber</h4>
+                    <p class="card-item__price">$ 1799,99</p>
+                    <p class="card-item__promotion">3 cuotas sin interés</p>
+                  </div>
+                </a>
+              </article>
+            </li>
+            <li class="slider__item glide__slide">
+              <article class="card-item">
+                <a class="card-item__link" href="./pages/shop/shop.html">
+                  <picture class="card-item__cover">
+                    <span class="card-item__tag">Nuevo</span>
+                    <img
+                      class="card-item__img-front"
+                      src="./img/pokemon/pidgeotto-1.webp"
+                      alt="Figura coleccionable Funko Pop de Pidgeotto de la serie Pokemon."
+                    />
+                    <img
+                      class="card-item__img-back"
+                      src="./img/pokemon/pidgeotto-box.webp"
+                      alt="Figura coleccionable Funko Pop de Pidgeotto de la serie Pokemon en caja."
+                    />
+                  </picture>
+                  <div class="card-item__content">
+                    <p class="card-item__licence">Pokemon</p>
+                    <h4 class="card-item__name">Pidgeotto</h4>
+                    <p class="card-item__price">$ 1799,99</p>
+                    <p class="card-item__promotion">3 cuotas sin interés</p>
+                  </div>
+                </a>
+              </article>
+            </li>
+            <li class="slider__item glide__slide">
+              <article class="card-item">
+                <a class="card-item__link" href="./pages/shop/shop.html">
+                  <picture class="card-item__cover">
+                    <span class="card-item__tag">Nuevo</span>
+                    <img
+                      class="card-item__img-front"
+                      src="./img/harry-potter/luna-1.webp"
+                      alt="Figura coleccionable Funko Pop de Luna Lovegood con una máscara de león de la saga de películas de Harry Potter."
+                    />
+                    <img
+                      class="card-item__img-back"
+                      src="./img/harry-potter/luna-box.webp"
+                      alt="Figura coleccionable Funko Pop de Luna Lovegood con una máscara de león de la saga de películas de Harry Potter en caja."
+                    />
+                  </picture>
+                  <div class="card-item__content">
+                    <p class="card-item__licence">Harry Potter</p>
+                    <h4 class="card-item__name">Luna Lovegood lion mask</h4>
+                    <p class="card-item__price">$ 1799,99</p>
+                    <p class="card-item__promotion">3 cuotas sin interés</p>
+                  </div>
+                </a>
+              </article>
+            </li>
+          </ul>
+        </div>
+        <div class="glide__arrows" data-glide-el="controls">
+          <button class="glide__arrow glide__arrow--left" data-glide-dir="<">
+            <iconify-icon icon="tabler:chevron-left"></iconify-icon>
+          </button>
+          <button class="glide__arrow glide__arrow--right" data-glide-dir=">">
+            <iconify-icon icon="tabler:chevron-right"></iconify-icon>
+          </button>
+        </div>
+      </section>
+      <!-- MAIN LASTEST RELEASES END -->
+    </main>
+    <!-- MAIN END -->
+
+    

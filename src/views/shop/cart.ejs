@@ -1,0 +1,152 @@
+<%- contentFor('body') %>
+    
+
+    <!-- MAIN START -->
+    <main class="container">
+      <section class="cart-collection">
+        <h2 class="cart-collection__title">Carrito de Compras</h2>
+
+        <div class="cart-collection__table">
+          <div class="cart-collection__table-header">
+            <div>Detalle de Producto</div>
+            <div>Cantidad</div>
+            <div>Total</div>
+          </div>
+
+          <div class="cart-collection__item">
+            <div class="item-funkoPop">
+              <img
+                class="item-funkoPop__img"
+                src="../../img/star-wars/baby-yoda-1.webp"
+                alt="Figura coleccionable Funko Pop de Grogu de la serie the Mandalorian."
+              />
+              <div class="item-funkoPop__text">
+                <h2 class="item-funkoPop__title">Baby Yoda Blueball</h2>
+                <p class="item-funkoPop__licence">Star Wars</p>
+                <br />
+                <p class="item-funkoPop__price">Precio: $1799,99</p>
+              </div>
+            </div>
+            <div class="cart-collection__input">
+              <div class="cart-collection__input-number">
+                <input
+                  class="cart-collection__input-number-count"
+                  type="number"
+                  name="add-more"
+                  value="2"
+                  min="0"
+                  id="quantity"
+                  readonly
+                />
+                <div class="cart-collection__input-number-button">
+                  <button
+                    class="cart-collection__input-number-button-control"
+                    id="add-product"
+                  >
+                    +
+                  </button>
+                  <button
+                    class="cart-collection__input-number-button-control"
+                    id="less-product"
+                  >
+                    -
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="cart-collection__total-price">
+              <p>$3599,98</p>
+
+            <button class="cart-collection__table-button">
+              <img
+                src="../../img/icons/delete_trash-cart.svg"
+                alt="Botón para eliminar producto"
+              />
+            </button>
+          </div>
+        </div>
+
+        <div class="cart-collection__item">
+          <div class="item-funkoPop">
+            <img
+              class="item-funkoPop__img"
+              src="../../img/pokemon/pidgeotto-1.webp"
+              alt="Figura coleccionable Funko Pop de Pidgeotto de la serie Pokemon."
+            />
+            <div class="item-funkoPop__text">
+              <h2 class="item-funkoPop__title">Pidgeotto</h2>
+              <p class="item-funkoPop__licence">Pokemon</p>
+              <br />
+              <p class="item-funkoPop__price">Precio: $1799,99</p>
+            </div>
+          </div>
+          <div class="cart-collection__input">
+            <div class="cart-collection__input-number">
+              <input
+                class="cart-collection__input-number-count"
+                type="number"
+                name="add-more"
+                value="1"
+                min="0"
+                id="quantity"
+                readonly
+              />
+              <div class="cart-collection__input-number-button">
+                <button
+                  class="cart-collection__input-number-button-control"
+                  id="add-product"
+                >
+                  +
+                </button>
+                <button
+                  class="cart-collection__input-number-button-control"
+                  id="less-product"
+                >
+                  -
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="cart-collection__total-price">
+            <p>$1799,99</p>
+
+          <button class="cart-collection__table-button">
+            <img
+              src="../../img/icons/delete_trash-cart.svg"
+              alt="Botón para eliminar producto"
+            />
+          </button>
+        </div>
+      </div>
+      </section>
+
+      <section class="cart-collection__purchase-summary resumen">
+        <article class="resumen__position">
+          <h2>Resumen</h2>
+          <div class="resumen__content">
+            <div class="resumen__description-and-price">
+              <div class="resumen__description">
+                <span>Cantidad de productos</span>
+                <span>Subtotal</span>
+                <span>Envio</span>
+              </div>
+              <div class="resumen__price">
+                <span>3</span>
+                <span>$5.399,97</span>
+                <span>$0,00</span>
+              </div>
+            </div>
+            <div class="resumen__description-and-price resumen__total">
+              <div class="resumen__description-total">
+                <span>Total</span>
+              </div>
+              <div class="resumen__price-total">
+                <span>$5.399,97</span>
+              </div>
+            </div>
+          </div>
+          <a class="resumen-button" href="#">Ir a pagar</a>
+        </article>
+      </section>
+    </main>
+    <!-- MAIN END -->

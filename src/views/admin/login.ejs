@@ -1,0 +1,39 @@
+<%- contentFor('body') %>
+    
+
+    <!-- MAIN START -->
+     <main>
+      <section>
+        <h2 class="login__title">Ingresar a mi cuenta</h2>
+      </section>
+      <section class="signup__container">
+      <form action="" method="POST">
+        <div>
+          <label class="letter2 spaces" for="email">Email:</label>
+          <input class="bottom_border7 spaces" type="email" id="email" placeholder="johndoe@correo.com" />
+        </div>
+        <div>
+        <label class="letter2 spaces" for="password">Contraseña:</label>
+          <input class="bottom_border8 spaces"
+            type="password"
+            id="pass"
+            name="password"
+            minlength="9"
+            required
+            placeholder="*********"
+          />
+        </div>
+      </form>
+    </section>
+      <section class="register__container">
+        <input class="red_button2" type="submit" value="Ingresar" />
+        <input class="remember__container" type="checkbox" name="recordarme" id="recordarme" />
+        <label class="terms__conditions" for="">Recordarme</label>
+      </section>
+      <section class="forgot__container">
+        <a href="./password.html">Olvide mi Contraseña</a>
+      </section>
+    </main>
+    <!-- MAIN END -->
+
+ 
