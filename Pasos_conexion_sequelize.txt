@@ -1,0 +1,80 @@
+### Instalar dependencia:
+npm i sequelize mysql2;
+---
+
+### Crear el archivo de conexion dentro de la carpeta src/models:
+connection.js
+
+// Requerir Sequelize
+const { Sequelize } = require('sequelize');
+
+const sequelize = new Sequelize(
+    process.env.DB_NAME,
+    process.env.DB_USER,
+    process.env.DB_PASS,
+    {
+        host: process.env.DB_HOST,
+        dialectModule: require('mysql2'),
+        dialect: 'mysql',
+    }
+);
+
+// Exportar modulo
+module.exports = sequelize;
+---
+
+### Conectarse a la BD.
+En index.js traer el modulo de la conexion:
+
+const sequelize = require('./src/models/connection');
+---
+
+### Hacer la conexion en el app.listen, junto al PORT:
+
+app.listen(PORT, async() => {
+    try {
+        await sequelize.sync();
+    } catch (error) {
+        console.log(error);
+    }
+    console.log(`http://localhost:${PORT}`)
+});
+---
+
+### Creamos modelo (intermediario):
+
+crear src/models/Product.js
+
+// Requerir tipos de datos que vamos a usar de sequelize
+const {DataTypes} = require('sequelize');
+// Requerir la conexion de sequelize
+const sequelize = require('./connection');
+// Definir un elemento (producto)
+const Product = sequelize.define('Product', {
+    nombre: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
+    precio: {
+        type: DataTypes.FLOAT,
+        allowNull: true,
+    },
+});
+
+---
+
+### Sincronizar
+
+// Sincronizacion, crear la tabla si no existe
+(async() => {
+    //await sequelize.sync({force: true}); 
+    await sequelize.sync(); 
+})();
+
+---
+
+### Requerir el modelo al buscar los productos.
+
+En productController:
+
+const model = require('../../models/Product);
