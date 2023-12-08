@@ -186,6 +186,17 @@ header {
   background-color: var(--red-900);
 }
 
+/*________ codigo menu reposive__________*/
+
+.nav__label, .nav__input{  
+  display: none;
+}
+
+.menu-reponsive{
+  color: var(--bright-background);
+}
+
+
 /* Banner */
 .banner {
   background-image: url(../img/funkos-banner.webp);
@@ -1148,4 +1159,87 @@ iconify-icon {
   font-size: var(--font-small);
   font-weight: var(--regular);
   color: var(--black-1000);
+}
+
+
+/*______________-MEDIAQUERY HEADER-______________*/
+@media (max-width:1200px){
+
+  /*___________HEADER_______*/
+  .navbar__logo{
+      width: 25rem;
+  }
+
+  .navbar__menu{
+      gap: var(--spacings-8);
+  }
+
+  .navbar__link{
+      font-size: var(--font-small);
+  }
+}   
+
+@media (max-width:700px){
+
+
+  /*_____________NAAVBAR RESPONSIVE___________*/
+
+  .navbar__logo{
+      max-width: var(--spacings-200) ;
+   }
+
+  .navbar__menu{
+      flex-direction: column;
+      gap: var(--spacings-36);
+      padding: var(--spacings-18);
+      background-color: var(--primary-red);
+      position: absolute;
+      left: 0;
+      top: 10.9rem;
+      width: 100%;
+      height: 0;
+      transition: all 300ms ease;
+      z-index: 1000;
+      opacity: 0;
+      visibility: hidden;
+  }
+
+  .nav__label{
+      display: block;
+      cursor: pointer;
+  }
+  
+  .nav__input:checked + .navbar__menu {
+      height: var(--spacings-300);
+      visibility: visible;
+      opacity: 1;
+  }
+
+  .submenu {
+      width: 100%;
+      background-color: var(--dark-background);
+      z-index: 1; 
+  }
+}
+
+@media (max-width:600px) {
+  
+  .footer{
+      padding-left: var(--spacings-36);
+      padding-right: var(--spacings-36);
+  
+  }
+
+  .footer img{
+      width: 10rem;
+     
+  }
+  .navbar-footer__link a{
+      font-size: var(--font-xsmall);
+  }
+
+  .footer__copy{
+      font-size: 1.2em;
+  }
+  
 }
