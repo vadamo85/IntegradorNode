@@ -9,6 +9,7 @@ const adminRoutes = require('./src/routes/adminRoutes');
 const authRoutes = require('./src/routes/authRoutes');
 const path = require('path');
 const expressLayouts = require('express-ejs-layouts');
+const sequelize = require('./src/models/connection');
 
 app.use(express.static(path.join(__dirname, "/public")));
 
@@ -23,6 +24,14 @@ app.use('/', shopRoutes);
 app.use('/', adminRoutes);
 app.use('/', authRoutes);
 
-app.listen(PORT, () => console.log(`http://localhost:${PORT}`));
+app.listen(PORT, async() => {
+    try {
+        await sequelize.authenticate();
+    } catch (error) {
+        console.log(error);
+    }
+    console.log(`http://localhost:${PORT}`)
+});
+
 
 
