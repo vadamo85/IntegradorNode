@@ -13,3 +13,7 @@ const Product = sequelize.define('Product', {
         allowNull: true,
     },
 });
+
+
+
+module.exports = Product;
