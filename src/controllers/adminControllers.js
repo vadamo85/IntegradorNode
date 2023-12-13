@@ -10,14 +10,19 @@ const adminControllers = {
         try {
             const productos = await model.findAll();
             //console.log(productos);
-            res.render('admin/admin', {productos, layout:'layouts/adminLayout'}) //, layout:'layouts/adminLayout'
+            res.render('admin/admin', {productos, layout:'layouts/adminLayout'});
         } catch (error) {
             console.log(error);
             res.status(500).send(error);
         }
     },
-    adminItem: (req, res) => res.render('admin/create-item', {layout:'layouts/adminLayout'}),
-    adminCreateItem: (req, res) => res.send('Route for add an item in stock View'),
+    create: (req, res) => {
+        res.render('admin/create', {layout:'layouts/adminLayout'})
+    },
+    store: (req, res) => {
+        console.log(req.body);
+        res.send('Producto creado');
+    },
     adminEdit:(req, res) => res.render('admin/edit-item', {layout:'layouts/adminLayout'}),
     adminEditOK: (req, res) => res.send('Route to confirm changes in an item View'),
     adminDelete: (req, res) => res.send('Route to delete an item')
