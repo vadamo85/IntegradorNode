@@ -4,16 +4,22 @@ const {DataTypes} = require('sequelize');
 const sequelize = require('./connection');
 // Definir un elemento (producto)
 const Product = sequelize.define('Product', {
+    codigo: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
     nombre: {
         type: DataTypes.STRING,
         allowNull: false,
     },
-    precio: {
-        type: DataTypes.FLOAT,
+    categoría: {
+        type: DataTypes.STRING,
         allowNull: true,
     },
 });
 
-
+(async() => {
+    await sequelize.sync({force: true}); 
+    })();
 
 module.exports = Product;

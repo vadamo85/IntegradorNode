@@ -10,7 +10,7 @@ const adminControllers = {
         try {
             const productos = await model.findAll();
             //console.log(productos);
-            res.render('admin/admin', {productos}) //, layout:'layouts/adminLayout'
+            res.render('admin/admin', {productos, layout:'layouts/adminLayout'}) //, layout:'layouts/adminLayout'
         } catch (error) {
             console.log(error);
             res.status(500).send(error);
