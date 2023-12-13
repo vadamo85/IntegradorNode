@@ -16,10 +16,10 @@ const adminControllers = {
             res.status(500).send(error);
         }
     },
-    create: (req, res) => {
+    adminItem: (req, res) => {
         res.render('admin/create', {layout:'layouts/adminLayout'})
     },
-    store: (req, res) => {
+    adminCreateItem: (req, res) => {
         console.log(req.body);
         res.send('Producto creado');
     },
