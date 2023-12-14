@@ -1,12 +1,52 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const adminControllers = require('../controllers/adminControllers');
+const multer = require("multer");
+// voy a usar la memoria para primero manipular la data del form
+const upload = multer({ storage: multer.memoryStorage() });
 
-router.get('/admin', adminControllers.admin);
-router.get('/admin/create', adminControllers.adminItem);
-router.post('/admin/create', adminControllers.adminCreateItem);
-router.get('/admin/edit/:id', adminControllers.adminEdit);
-router.put('/admin/edit/:id', adminControllers.adminEditOK);
-router.delete('/admin/delete/:id', adminControllers.adminDelete);
+// body es una función de express-validator xa crear las reglas
+const { body } = require("express-validator");
+
+const validations = [
+  body("category")
+    .not()
+    .isEmpty()
+    .withMessage("Debe seleccionar una Categoría"),
+  body("licence").not().isEmpty().withMessage("Debe seleccionar una Licencia"),
+  body("nombre")
+    .not()
+    .isEmpty()
+    .withMessage("El nombre es obligatorio")
+    .bail()
+    .isLength({ min: 3 })
+    .withMessage("Tiene que tener al menos 3 caracteres"),
+    body("sku-item")
+    .not()
+    .isEmpty()
+    .withMessage("Debe agregar un identificador"),
+    body("item-price")
+    .not()
+    .isEmpty()
+    .withMessage("Debe agregar un Precio"),
+    // Pendiente ver si se valida la carga de imagen y stock
+    
+    
+];
+
+const adminControllers = require("../controllers/adminControllers");
+
+router.get("/admin", adminControllers.admin); // Lista todos los productos
+
+router.get("/admin/create", adminControllers.adminItem); // Form de carga
+
+router.post(
+  "/admin/create",
+  upload.single("imagen"),
+  validations,
+  adminControllers.adminCreateItem
+);
+router.get("/admin/edit/:id", adminControllers.adminEdit);
+router.put("/admin/edit/:id", adminControllers.adminEditOK);
+router.delete("/admin/delete/:id", adminControllers.adminDelete);
 
 module.exports = router;
