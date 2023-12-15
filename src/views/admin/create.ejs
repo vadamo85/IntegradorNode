@@ -16,15 +16,15 @@
           <form action="/admin/create" method="post" enctype="multipart/form-data">
             <div>
               <label for="category" class="letter1 spaces">Categoría:</label>
-              <select id="category" name="category" class="spaces style">
+              <select id="category" name="category" class="spaces style" required>
                 <option value="seleccionar" selected>Seleccionar</option>
-                <option value="fuko-pop">Figuras</option>
+                <option value="funko-pop">Figuras</option>
                 <option value="remera">Remeras</option>
                 <option value="llavero">Llaveros</option>
               </select>
 
               <label for="licence" class="letter1 spaces">Licencia:</label>
-              <select id="licence" name="licence" class="spaces style">
+              <select id="licence" name="licence" class="spaces style" required>
                 <option value="seleccionar" selected>Seleccionar</option>
                 <option value="harry-potter">Harry Potter</option>
                 <option value="naruto-shippuden">Naruto Shippuden</option>
@@ -43,46 +43,56 @@
                 placeholder="Kakashi Hatake Shippuden Saga"
                 class="bottom_border spaces"
                 value="<%= typeof values != 'undefined' ? values.nombre : '' %>"
+                required
+                minlength="3"
               />
             </div>
             
             <div>
               <textarea
-                name="item-description"
-                id="item-description"
+                name="itemDescription"
+                id="itemDescription"
                 cols="89"
                 rows="10"
                 placeholder="Descripción del producto"
                 class="spaces"
-              ></textarea>
+                value="<%= typeof values != 'undefined' ? values.itemDescription : '' %>"></textarea>
             </div>
 
             <div>
-              <label for="sku-item" class="letter2 spaces mayus" >sku:</label>
+              <label for="skuItem" class="letter2 spaces mayus" >sku:</label>
               <input
                 type="text"
-                id="sku-item"
-                name="sku-item"
+                id="skuItem"
+                name="skuItem"
                 placeholder="SSK111AB001"
                 class="bottom_border1 spaces"
+                value="<%= typeof values != 'undefined' ? values.skuItem : '' %>"
+                required
               />
 
-              <label for="item-price" class="letter2 spaces">Precio:</label>
+              <label for="itemPrice" class="letter2 spaces">Precio:</label>
               <input
                 type="text"
-                id="item-price"
-                name="item-price"
+                id="itemPrice"
+                name="itemPrice"
                 placeholder="$ 0.000,00"
                 class="bottom_border1 spaces"
+                value="<%= typeof values != 'undefined' ? values.itemPrice : '' %>"
+                required
+                min="1"
               />
 
-              <label for="item-stock" class="letter2 spaces">Stock:</label>
+              <label for="itemStock" class="letter2 spaces">Stock:</label>
               <input
                 type="text"
-                id="item-stock"
-                name="item-stock"
+                id="itemStock"
+                name="itemStock"
                 placeholder="0"
                 class="bottom_border2 spaces"
+                value="<%= typeof values != 'undefined' ? values.itemStock : '' %>"
+                required
+                min="1"
               />
             </div>
 
@@ -94,10 +104,12 @@
                 name="discount"
                 placeholder="0%"
                 class="bottom_border2 spaces"
+                value="<%= typeof values != 'undefined' ? values.discount : '' %>"
+                min="1"
               />
 
               <label for="cuotas" class="letter2 spaces">Cuotas:</label>
-              <select name="cuotas" id="cuotas" class="spaces style ">
+              <select name="cuotas" id="cuotas" class="spaces style">
                 <option value="3" selected>3 Cuotas sin interés</option>
                 <option value="6">6 Cuotas sin interés</option>
                 <option value="12">12 Cuotas sin interés</option>
