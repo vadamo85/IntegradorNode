@@ -1,5 +1,4 @@
 node_modules
 .env
-uploads/ige.jpg
-uploads/robot.jpg
-uploads/img-cypress.png
+.env2
+public/uploads/*
