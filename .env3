@@ -1,0 +1,11 @@
+PORT=4000
+DB_NAME=firthunandz_cac23573_g1
+DB_USER=337747_usuario
+DB_PASS='cac23753'
+DB_HOST=mysql-firthunandz.alwaysdata.net
+#dotenv me permite levantar lo que son variables de entorno - Las configuramos en este archivo .env
+# PORT=3001
+# DB_NAME=monica-bidart_cac_23573
+# DB_USER=338153_mnc-bbdd
+# DB_PASS="Ttouct-MNC*88aa"
+# DB_HOST=mysql-monica-bidart.alwaysdata.net
