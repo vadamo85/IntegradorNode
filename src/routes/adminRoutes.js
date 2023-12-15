@@ -12,22 +12,29 @@ const validations = [
     .not()
     .isEmpty()
     .withMessage("Debe seleccionar una Categoría"),
-  body("licence").not().isEmpty().withMessage("Debe seleccionar una Licencia"),
+  body("licence")
+    .not()
+    .isEmpty()
+    .withMessage("Debe seleccionar una Licencia"),
   body("nombre")
     .not()
     .isEmpty()
     .withMessage("El nombre es obligatorio")
     .bail()
     .isLength({ min: 3 })
-    .withMessage("Tiene que tener al menos 3 caracteres"),
-    body("sku-item")
+    .withMessage("Debe tener al menos 3 caracteres"),
+    body("skuItem")
     .not()
     .isEmpty()
     .withMessage("Debe agregar un identificador"),
-    body("item-price")
+    body("itemPrice")
     .not()
     .isEmpty()
     .withMessage("Debe agregar un Precio"),
+    body("itemStock")
+    .not()
+    .isEmpty()
+    .withMessage("Debe agregar existencias"),
     // Pendiente ver si se valida la carga de imagen y stock
     
     

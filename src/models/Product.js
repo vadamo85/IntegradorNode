@@ -4,7 +4,11 @@ const {DataTypes} = require('sequelize');
 const sequelize = require('./connection');
 // Definir un elemento (producto)
 const Product = sequelize.define('Product', {
-    codigo: {
+    category: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
+    licence: {
         type: DataTypes.STRING,
         allowNull: false,
     },
@@ -12,7 +16,27 @@ const Product = sequelize.define('Product', {
         type: DataTypes.STRING,
         allowNull: false,
     },
-    categoría: {
+    itemDescription: {
+        type: DataTypes.STRING,
+        allowNull: true,
+    },
+    skuItem: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
+    itemPrice: {
+        type: DataTypes.FLOAT,
+        allowNull: false,
+    },
+    itemStock: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+    },
+    discount: {
+        type: DataTypes.INTEGER,
+        allowNull: true,
+    },
+    cuotas: {
         type: DataTypes.STRING,
         allowNull: true,
     },

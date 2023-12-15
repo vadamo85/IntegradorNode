@@ -105,3 +105,21 @@ las veces necesarias como tantos items reciba.
 - El controlador de cada ruta debe utilizar el método render() de
 express para retornar el archivo correspondiente inyectando la
 información que esa vista necesite.
+
+### Mission #6
+
+Debemos llevar a cabo las siguientes tareas:
+- A partir del siguiente diagrama E/R, crear la estructura de la base
+de datos.
+- Llenar la base de datos recientemente creada con productos de la
+tienda a través del MySQL Workbench.
+- En el proyecto, crear el archivo de conexión a la base de datos
+dentro de una carpeta llamada “config”.
+- Crear la capa de Modelos y el archivo “product.model.js” (o el
+nombre que prefieras) necesario para crear las funciones que
+acceden a la base de datos en el flujo de productos.
+- Realizar el mismo paso anterior pero para “user.model.js” mediante
+el cual accederemos al flujo de usuarios.
+- Desde la capa de controllers utilizar los modelos recientemente
+creados que sean necesarios para satisfacer la lógica de cada
+controlador.
