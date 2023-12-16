@@ -45,14 +45,15 @@ const adminControllers = require("../controllers/adminControllers");
 router.get("/admin", adminControllers.admin); // Lista todos los productos
 
 router.get("/admin/create", adminControllers.adminItem); // Form de carga
-
-router.post(
-  "/admin/create",
+router.post("/admin/create",
   upload.single("imagen"),
   validations,
   adminControllers.adminCreateItem
 );
+
+
 router.get("/admin/edit/:id", adminControllers.adminEdit);
+
 router.put("/admin/edit/:id", adminControllers.adminEditOK);
 router.delete("/admin/delete/:id", adminControllers.adminDelete);
 
