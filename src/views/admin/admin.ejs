@@ -46,12 +46,12 @@
               <% productos.forEach(producto => { %>
               <tr>
                 <td><%= producto.id %></td>
-                <td><%= producto.codigo %></td>
+                <td><%= producto.skuItem %></td>
                 <td><%= producto.nombre %></td>
-                <td class="mayus"><%= producto.categoría %></td>
+                <td class="mayus"><%= producto.category %></td>
                 <td>
                   <picture>
-                    <a href="/admin/edit/:id">
+                    <a href="/admin/edit/<%= producto.id %>">
                       <img
                         class="edit__icon"
                         src="../../img/icons/edit_pencil.svg"
