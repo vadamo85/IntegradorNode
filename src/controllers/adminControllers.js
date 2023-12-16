@@ -38,13 +38,23 @@ const adminControllers = {
     // Guardamos la información en la BBDD
     try {
       const producto = await model.create(req.body);
+
       if (producto && req.file) {
         // optimizo el nombre de la imagen:
-        const name = req.file.originalname;
+        console.log(req.file);
+
+        const carpeta = producto.licence + "/";
+        console.log("*** Personalización de la imagen con... " + carpeta);
         sharp(req.file.buffer)
           .resize(300)
-          .toFile(path.resolve(__dirname, "../../public/uploads/", name)); // toFile requiere una ruta absoluta
+          .toFile(
+            path.resolve(
+              __dirname,
+              `../../public/uploads/${producto.licence}/${producto.id}.jpg`
+            )
+          ); // toFile requiere una ruta absoluta
       }
+      // TODO: Obtener la ruta de la imagen y guardarla en el array de strings con rutas de imagenes para recuperarlas en el edit
 
       res.redirect("/admin");
     } catch (error) {
@@ -57,7 +67,6 @@ const adminControllers = {
     try {
       const producto = await model.findByPk(req.params.id);
       console.log("PRODUCTOOOOOOO" + producto);
-
       // Verificar que exista el objeto
       if (producto) {
         console.log(producto.category + "----" + producto.licence);
@@ -75,8 +84,50 @@ const adminControllers = {
     }
   },
 
-  adminEditOK: (req, res) =>
-    res.send("Route to confirm changes in an item View"),
+  // Corresponde al update
+  adminEditOK: async (req, res) => {
+    const errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+      return res.render("admin/edit/:id", {
+        values: req.body,
+        errors: errors.array(),
+      });
+    }
+
+    try {
+      const affected = await model.update(req.body, {
+        where: {
+          id: req.params.id,
+        },
+      });
+
+      // tengo que chequear que se haya modificado un solo registro de la bbdd
+      if (affected[0] == 1) {
+        if (req.file) {
+          sharp(req.file.buffer)
+            .resize(300)
+            .toFile(
+              path.resolve(
+                __dirname,
+                `../../public/uploads/${req.body.licence}/${req.params.id}.jpg`
+              )
+            );
+        }
+
+        res.redirect("/admin");
+      } else {
+        // error mas a nivel de pasar mal los datos
+        res.status(500).send("ERROR al Actualizar el producto");
+      }
+
+      console.log("Route to confirm changes in an item View");
+    } catch (error) {
+      console.log("ERROR: ", error);
+      res.status(500).send(error);
+    }
+  },
+
   adminDelete: (req, res) => res.send("Route to delete an item"),
 };
 
