@@ -1,3 +1,4 @@
+const fs = require("fs");
 //requerimientos para multer y expressvalidator
 const path = require("path");
 const sharp = require("sharp");
@@ -6,6 +7,7 @@ const { validationResult } = require("express-validator");
 
 const model = require("../models/Product");
 const { send } = require("process");
+const { error } = require("console");
 
 const adminControllers = {
   admin: async (req, res) => {
@@ -66,7 +68,7 @@ const adminControllers = {
   adminEdit: async (req, res) => {
     try {
       const producto = await model.findByPk(req.params.id);
-      console.log("PRODUCTOOOOOOO" + producto);
+
       // Verificar que exista el objeto
       if (producto) {
         console.log(producto.category + "----" + producto.licence);
@@ -120,15 +122,47 @@ const adminControllers = {
         // error mas a nivel de pasar mal los datos
         res.status(500).send("ERROR al Actualizar el producto");
       }
-
-      console.log("Route to confirm changes in an item View");
     } catch (error) {
       console.log("ERROR: ", error);
       res.status(500).send(error);
     }
   },
 
-  adminDelete: (req, res) => res.send("Route to delete an item"),
+  adminDelete: async (req, res) => {
+    console.log(
+      req.params.id + "PARAMETROS DEL DELETEEEEEEEEEEEEEEEEE",
+      req.body.licence
+    );
+    try {
+      const producto = await model.findByPk(req.params.id);
+
+      const result = await model.destroy({
+        where: {
+          id: req.params.id,
+        },
+      });
+      console.log("RESULTADO: ", result, producto.licence, producto.id);
+
+      if (result == 1) {
+        fs.unlink(
+          path.resolve(
+            __dirname,
+            `../../public/uploads/${producto.licence}/${req.params.id}.jpg`
+          ),
+          (error) => {
+            if (error) {
+              console.log("Error del callback: ", error);
+            }
+          }
+        );
+      }
+
+      res.redirect("/admin");
+    } catch (error) {
+      console.log("MIERROR: ", error);
+      res.status(500).send(error);
+    }
+  },
 };
 
 module.exports = adminControllers;

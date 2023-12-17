@@ -46,6 +46,7 @@ router.put(
   validations,
   adminControllers.adminEditOK
 );
+
 router.delete("/admin/delete/:id", adminControllers.adminDelete);
 
 module.exports = router;
