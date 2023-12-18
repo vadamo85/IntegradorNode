@@ -22,7 +22,7 @@ const adminControllers = {
     res.render("admin/create", { layout: "layouts/adminLayout" });
   },
 
-  adminCreateItem: (req, res) => {
+  adminCreateItem: async (req, res) => {
     console.log(req.body, req.file);
 
     const errors = validationResult(req);
@@ -34,13 +34,36 @@ const adminControllers = {
         });
     }
 
-    if (req.file) {
-      // optimizo el nombre de la imagen:
-      const name = req.file.originalname;
-      sharp(req.file.buffer)
-        .resize(300)
-        .toFile(path.resolve(__dirname, "../../public/uploads/", name)); // toFile requiere una ruta absoluta
-    }
+    try {
+      const producto = await model.create(req.body);
+      console.log(producto);
+
+      // Subir la imagen solo si el producto esta creado.
+      if(producto && req.file){
+          sharp(req.file.buffer)
+              .resize()
+              .toFile(path.resolve(
+                  __dirname,
+                  `../../../public/uploads/productos/producto_${producto.id}.jpg`
+                  )
+              );
+      }
+
+      //redireccionar a la lista de productos
+      res.redirect('/admin');
+
+  } catch (error) {
+      console.log(error);
+      res.status(500).send(error);
+  }
+
+    // if (req.file) {
+    //   // optimizo el nombre de la imagen:
+    //   const name = req.file.originalname;
+    //   sharp(req.file.buffer)
+    //     .resize(300)
+    //     .toFile(path.resolve(__dirname, "../../public/uploads/", name)); // toFile requiere una ruta absoluta
+    // }
 
     res.send("Crear producto...");
   },

@@ -8,14 +8,14 @@ const upload = multer({ storage: multer.memoryStorage() });
 const { body } = require("express-validator");
 
 const validations = [
-  body("category")
-    .not()
-    .isEmpty()
-    .withMessage("Debe seleccionar una Categoría"),
-  body("licence")
-    .not()
-    .isEmpty()
-    .withMessage("Debe seleccionar una Licencia"),
+  // body("category")
+  //   .not()
+  //   .isEmpty()
+  //   .withMessage("Debe seleccionar una Categoría"),
+  // body("licence")
+  //   .not()
+  //   .isEmpty()
+  //   .withMessage("Debe seleccionar una Licencia"),
   body("nombre")
     .not()
     .isEmpty()
@@ -23,18 +23,18 @@ const validations = [
     .bail()
     .isLength({ min: 3 })
     .withMessage("Debe tener al menos 3 caracteres"),
-    body("skuItem")
-    .not()
-    .isEmpty()
-    .withMessage("Debe agregar un identificador"),
-    body("itemPrice")
+  // body("skuItem")
+  //   .not()
+  //   .isEmpty()
+  //   .withMessage("Debe agregar un identificador"),
+  body("itemPrice")
     .not()
     .isEmpty()
     .withMessage("Debe agregar un Precio"),
-    body("itemStock")
-    .not()
-    .isEmpty()
-    .withMessage("Debe agregar existencias"),
+  // body("itemStock")
+  //   .not()
+  //   .isEmpty()
+  //   .withMessage("Debe agregar existencias"),
     // Pendiente ver si se valida la carga de imagen y stock
     
     
