@@ -13,84 +13,85 @@
           </ul>
           <% } %>
           
-        <form action="/admin/edit/:id" method="POST" enctype="multipart/form-data">
+        <form action="/admin/edit/<%= values.id %>?_method=PUT" method="POST" enctype="multipart/form-data">
           <div>
+
             <label for="category" class="letter1 spaces">Categoría:</label>
-            <select name="category" id="category"class="spaces style" required>
-              <option value="seleccionar">Seleccionar</option>
-              <option value="funko-pop" selected>Figuras</option>
+            <select name="category" id="category" class="spaces style" value="<%= values.category %>">
+              <option value=""></option>
+              <option value="funko-pop">Figuras</option>
               <option value="remera">Remeras</option>
               <option value="llavero">Llaveros</option>
             </select>
+
             <label for="licence"class="letter1 spaces" >Licencia:</label>
-            <select name="licence" id="licence"class="spaces style" required>
-              <option value="seleccionar">Seleccionar</option>
+            <select name="licence" id="licence" class="spaces style" required value="<%= values.licence %>">
+              <option value=""></option>
               <option value="harry-potter">Harry Potter</option>
-              <option value="naruto-shippuden" selected>Naruto Shippuden</option>
+              <option value="naruto-shippuden">Naruto Shippuden</option>
               <option value="pokemon">Pokemon</option>
               <option value="star-wars">Star Wars</option>
             </select>
+
           </div>
-          <div>
+
+          <div class="spaces">
             <label for="nombre" class="letter2 spaces">Nombre del producto:</label>
             <input
               type="text"
               id="nombre"
               name="nombre"
-              placeholder="Kakashi Hatake Shippuden Saga"
               class="bottom_border spaces"
               value="<%= typeof values != 'undefined' ? values.nombre : '' %>"
               required
               minlength="3"
             />
           </div>
+
           <div>
             <textarea
               name="itemDescription"
               id="itemDescription"
               cols="89"
               rows="10"
-              placeholder="Figura Funko coleccionable de Kakashi Hatake de la saga Naruto Shipudden invocando chidori."
               class="spaces"
-              value="<%= typeof values != 'undefined' ? values.itemDescription : '' %>"
-            ></textarea>
+              value="<%= values.itemDescription %>"></textarea>
           </div>
+
           <div>
             <label for="skuItem" class="letter2 spaces mayus">sku:</label>
             <input
-              type="text"
-              id="skuItem"
-              name="skuItem"
-              placeholder="SSK111AB001"
-              value="NAR001012"
+              type="text" id="skuItem" name="skuItem"
               class="bottom_border1 spaces"
               value="<%= typeof values != 'undefined' ? values.skuItem : '' %>"
               required
             />
+
             <label for="itemPrice" class="letter2 spaces">Precio:</label>
             <input
               type="text"
               id="itemPrice"
               name="itemPrice"
               placeholder="$ 0.000,00"
-              value="$ 1.799,00"
               class="bottom_border1 spaces"
               value="<%= typeof values != 'undefined' ? values.itemPrice : '' %>"
               required
               min="1"
             />
+
             <label for="itemStock" class="letter2 spaces">Stock:</label>
             <input
               type="text"
               id="itemStock"
               name="itemStock"
               placeholder="0"
-              value="10"
               class="bottom_border2 spaces"
               value="<%= typeof values != 'undefined' ? values.itemStock : '' %>"
-              min="0"
+              required
+              min="1"
             />
           </div>
+
           <div>
             <label for="discount" class="letter2 spaces">Descuento:</label>
             <input
@@ -98,10 +99,11 @@
               id="discount"
               name="discount"
               placeholder="0%"
-              value="%10"
               class="bottom_border2 spaces"
               value="<%= typeof values != 'undefined' ? values.discount : '' %>"
+              min="1"
             />
+
             <label for="cuotas" class="letter2 spaces">Cuotas:</label>
             <select name="cuotas" id="cuotas"class="spaces style">
               <option value="3">3 Cuotas sin interés</option>
@@ -110,38 +112,46 @@
               <option value="24">24 Cuotas sin interés</option>
             </select>
           </div>
+
+          <!-- TODO: Obtener la ruta personalizada de la imagen -->
           <div>
-            <label for="imgagen"class="letter2 spaces">Imágenes:</label>
+            <label for="imagen"class="letter2 spaces">Imágenes:</label>
             <input type="file" id="imagen" name="imagen" multiple class="spaces"/>
-          </section>
+          </div>
+
+
           <section>
-            <div class="container_img">           
-          <div>
-              <img
-                src="../../img/naruto/kakashi_hatake_front.svg"
-                alt="Figura coleccionable Funko Pop de Hatake Kakashi de la saga de Naruto Shippuden."
-                class="img_edit"/> 
-          </div>
-          <div>
-              <p class="img_letter border_top">Frente</p>
-            </div>
-          </div>
-          <div class="container_img">
+
+            <div class="container_img">  
               <div>
-              <img
-                src="../../img/naruto/kakashi_hatake_back.svg"
-                alt="Figura coleccionable Funko Pop de Hatake Kakashi de la saga de Naruto Shippuden en caja."
-                class="img_edit"/>
+                <img
+                  src="/uploads/<%=values.licence %>/<%= values.id %>.jpg"
+                  alt="<%= values.nombre %>"
+                  class="img_edit"/> 
+              </div>
+              <div>
+                <p class="img_letter border_top">Frente</p>
+              </div>
+            </div>
+
+            <div class="container_img">
+              <div>
+                <img
+                  src="../../img/naruto/kakashi_hatake_back.svg"
+                  alt="Figura coleccionable Funko Pop de Hatake Kakashi de la saga de Naruto Shippuden en caja."
+                  class="img_edit"/>
               </div>
               <div>
                 <p class="img_letter border_top">Dorso</p>
+              </div>
             </div>
+
+          </section>
+
+          <div class="container">
+            <input type="submit" value="Modificar Producto" class="red_button1"/>
           </div>
-            </section>
-            <div class="container">
-              <input type="submit" value="Modificar Producto" class="red_button1"/>
-            </div>
-          </div>
+
         </form>
       </section>
     </main>

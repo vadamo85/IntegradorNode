@@ -5,13 +5,13 @@
      <main>
       <section class="container_search">
         <div class="img_search">
-          <label for="search">
+          
             <picture>
               <img
                 src="../../img/icons/search_icon.svg"
                 alt="Ícono de búsqueda."
               /> </picture
-          ></label>
+          >
         </div>
         <div class="input_search">
           <input
@@ -46,12 +46,12 @@
               <% productos.forEach(producto => { %>
               <tr>
                 <td><%= producto.id %></td>
-                <td><%= producto.itemPrice %></td>
+                <td><%= producto.skuItem %></td>
                 <td><%= producto.nombre %></td>
-                <td class="mayus">categoria</td>
+                <td class="mayus"><%= producto.category %></td>
                 <td>
                   <picture>
-                    <a href="/admin/edit/:id">
+                    <a href="/admin/edit/<%= producto.id %>">
                       <img
                         class="edit__icon"
                         src="../../img/icons/edit_pencil.svg"
@@ -60,14 +60,19 @@
                   </picture>
                 </td>
                 <td>
-                  <picture>
-                    <a href="./edit-item.html">
-                      <img
-                        class="edit__icon"
-                        src="../../img/icons/delete_trash.svg"
-                        alt="Ícono de tacho de basura."
-                    /></a>
-                  </picture>
+                  <form class="form-delete" action="/admin/delete/<%= producto.id %>?_method=DELETE" method="post">
+                    <button type="submit">
+                      <picture>                        
+                          <img
+                            class="edit__icon"
+                            src="../../img/icons/delete_trash.svg"
+                            alt="Ícono de tacho de basura."
+                        />
+                      </picture>
+
+                    </button>
+                 
+                </form>
                 </td>
               </tr>
               <% }) %>
@@ -76,6 +81,20 @@
         </div>
       </section>
     </main>
+    <script>
+      document.addEventListener('click', (event) => {
+        if (event.target.closest("form").classList.contains("form-delete")) {
+          event.preventDefault();
+
+          const borrar = confirm("Seguro de Borrar?");
+
+          if(borrar) {
+            event.target.closest("form").submit();
+          }
+        }
+
+      })
+    </script>
     <!-- MAIN END -->
 
     
