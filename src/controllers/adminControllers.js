@@ -43,16 +43,16 @@ const adminControllers = {
 
       if (producto && req.file) {
         // optimizo el nombre de la imagen:
-        console.log(req.file);
+        //console.log(req.file);
 
-        const carpeta = producto.licence + "/";
-        console.log("*** Personalización de la imagen con... " + carpeta);
+        // const carpeta = producto.licence + "/";
+        // console.log("*** Personalización de la imagen con... " + carpeta);
         sharp(req.file.buffer)
           .resize(300)
           .toFile(
             path.resolve(
               __dirname,
-              `../../public/uploads/${producto.licence}/${producto.id}.jpg`
+              `../../public/uploads/producto_${producto.id}.jpg`
             )
           ); // toFile requiere una ruta absoluta
       }
@@ -71,7 +71,7 @@ const adminControllers = {
 
       // Verificar que exista el objeto
       if (producto) {
-        console.log(producto.category + "----" + producto.licence);
+        // console.log(producto.category + "----" + producto.licence);
         res.render("admin/edit-item", {
           values: producto,
           layout: "layouts/adminLayout",
@@ -112,7 +112,7 @@ const adminControllers = {
             .toFile(
               path.resolve(
                 __dirname,
-                `../../public/uploads/${req.body.licence}/${req.params.id}.jpg`
+                `../../public/uploads/producto_${req.params.id}.jpg`
               )
             );
         }
@@ -129,10 +129,8 @@ const adminControllers = {
   },
 
   adminDelete: async (req, res) => {
-    console.log(
-      req.params.id + "PARAMETROS DEL DELETEEEEEEEEEEEEEEEEE",
-      req.body.licence
-    );
+    console.log(req.params.id);
+
     try {
       const producto = await model.findByPk(req.params.id);
 
@@ -141,13 +139,13 @@ const adminControllers = {
           id: req.params.id,
         },
       });
-      console.log("RESULTADO: ", result, producto.licence, producto.id);
+      // console.log("RESULTADO: ", result, producto.id);
 
       if (result == 1) {
         fs.unlink(
           path.resolve(
             __dirname,
-            `../../public/uploads/${producto.licence}/${req.params.id}.jpg`
+            `../../public/uploads/producto_${req.params.id}.jpg`
           ),
           (error) => {
             if (error) {
