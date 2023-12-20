@@ -52,7 +52,7 @@ const adminControllers = {
           .toFile(
             path.resolve(
               __dirname,
-              `../../public/uploads/producto_${producto.id}.jpg`
+              `../../public/uploads/producto_${producto.id}.webp`
             )
           ); // toFile requiere una ruta absoluta
       }
@@ -112,7 +112,7 @@ const adminControllers = {
             .toFile(
               path.resolve(
                 __dirname,
-                `../../public/uploads/producto_${req.params.id}.jpg`
+                `../../public/uploads/producto_${req.params.id}.webp`
               )
             );
         }
@@ -145,7 +145,7 @@ const adminControllers = {
         fs.unlink(
           path.resolve(
             __dirname,
-            `../../public/uploads/producto_${req.params.id}.jpg`
+            `../../public/uploads/producto_${req.params.id}.webp`
           ),
           (error) => {
             if (error) {
