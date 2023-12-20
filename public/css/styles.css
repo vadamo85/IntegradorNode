@@ -477,9 +477,16 @@ iconify-icon {
 }
 
 /* Shop Items & Form-shop Layout */
+
+
+.filtrar__label, .filtrar__input { /* codigo para el aside filtrar reponsive*/
+  display: none;
+}
+
 .shop__content {
   display: flex;
-  padding: var(--spacings-68);
+  margin-top: var(--spacings-36); /*_________cambiado de 68 a 36_____*/
+  margin-bottom: var(--spacings-68); /*agregado*/
   gap: var(--spacings-8);
 }
 
@@ -545,10 +552,18 @@ iconify-icon {
 }
 
 /* Items */
+
+
 .itmes-layout {
   display: flex;
   flex-direction: column;
-  gap: var(--spacings-12);
+  margin-left: var(--spacings-8); /*______cambiado a 36______*/
+  margin-right: var(--spacings-8);/*____AGREGADO ESTE MARGIN___*/
+}
+
+
+.itmes-layout .card__item{
+  width: 30rem;/*agregada esta clase*/
 }
 
 /* Shopping Cart-page */
@@ -1165,6 +1180,7 @@ iconify-icon {
 /*______________-MEDIAQUERY HEADER-______________*/
 @media (max-width:1200px){
 
+
   /*___________HEADER_______*/
   .navbar__logo{
       width: 25rem;
@@ -1177,9 +1193,38 @@ iconify-icon {
   .navbar__link{
       font-size: var(--font-small);
   }
+
+  /*__________MAIN (SHOP-CONTENT)__________*/
+
+  .itmes-layout{
+      margin-left: var(--spacings-36);
+  }
+  
+
+  .itmes-layout .slider__item  {
+      width: 22rem;
+  }
 }   
 
-@media (max-width:700px){
+@media (max-width:1000px){
+
+
+  .itmes-layout{
+      margin-left: 0;
+  }
+  .itmes-layout  .slider__item  {
+      width: 16.7rem;
+  }
+
+  .itmes-layout .card-item__name{
+    width: 15rem;
+    font-size: var(--font-small) ;
+
+  }
+}
+
+@media (max-width:750px){ /*cambiado de 700 a 750*/
+
 
 
   /*_____________NAAVBAR RESPONSIVE___________*/
@@ -1220,10 +1265,264 @@ iconify-icon {
       background-color: var(--dark-background);
       z-index: 1; 
   }
+
+
+  /*__________MAIN (SHOP-CONTENT)_____*/
+
+  .shop__content{
+      flex-direction: column;
+      margin-top: 2em;
+  
+  }
+
+  .itmes-layout .slider__items{
+      display: flex;
+      justify-content: space-evenly;
+      gap: 0.8rem;
+  }
+
+  .itmes-layout .slider__item  {
+      width: 15.5rem;
+  }
+
+  
+
+  
+
+  /*___________MAIN (ASIDE)_________*/
+  .form-shop__content{
+      flex-direction: column;
+      background-color:  var(--grey-font) ;
+      position: absolute;
+      left: 4.9rem;
+      top: 15rem;
+      padding-left: 1rem;
+      padding-right: 1rem;
+      transition: all 300ms ease;
+      z-index: 100;
+      opacity: 0;
+      visibility: hidden;
+  }
+  
+  label{
+      font-size: var(--font-medium);        
+  }
+
+ 
+  
+  .filtrar__label{
+      display: block;
+      width: 0;
+      font-weight: 900;
+      margin-left: 3.4rem;
+      margin-bottom: 1rem;
+      display: flex;
+      flex-direction: column-reverse;
+      cursor: pointer;
+      color: var(--blue-900);
+      font-size: var(--font-medium);
+      
+      
+  }
+
+  .filtrar__input:checked + .form-shop__content{
+      height: auto;
+      visibility: visible;
+      opacity: 1;
+  }
+
+  .itmes-layout .card-item__name{
+    font-size: var(--font-small);
+    width: 14rem;
+
+  }
+ /*_______pagina item-----------*/
+  .collection{
+    display: flex;
+    flex-direction: column;
+    margin-top: var(--spacings-36);
+  }
+
+  .collection img{
+    width: 35rem;
+    height: 35rem;
+    
+  }
+
+  .collection picture {
+    width: 38rem;
+    height: 38rem;
+  }
+
+  .item-collection__content{
+    margin-left: var(--spacings-20);
+  }
+
+  .item-collection__title{
+    font-size: var(--font-large);
+  }
+
+  .item-collection__price{
+    font-size: var(--font-large);
+  }
+
+  .item-collection__text{
+    font-size: var(--font-small);
+  }
+
+  .item-flex-layout__buttons{
+    display: flex;
+    justify-content: center;
+  }
+
+  /*_________________login pag________*/
+
+
+  .login-conteiner{
+    margin-top: var(--spacings-36);
+    margin-bottom: var(--spacings-36);
+  }
+
+  /*___________--sing up___________*/
+
+  .signup__container{
+    margin-top: var(--spacings-36);
+    margin-bottom: var(--spacings-36);
+  }
+
+  .signup__container .login__title{
+    font-size: var(--font-large);
+  }
+
+  .signup__subtitle{
+    font-size: var(--font-small);
+  }
 }
 
 @media (max-width:600px) {
+
+.itmes-layout .slider__items{
+      display: flex;
+      flex-direction: column;
+  }
+  .itmes-layout .slider__item {
+      flex: 1 1 calc(30rem - var(--spacing-16));  
+  }
+  .itmes-layout .card-item__content{
+      display: flex;
+      flex-direction: column;
+      padding-bottom: var(--spacing-12);
+  }
   
+  .itmes-layout .card-item__link{
+      display: flex;
+      flex-wrap: nowrap;
+      height: 19rem;
+      
+  }
+
+  .itmes-layout .card-item img {
+      width: 14.8rem;
+      height: 14.8rem;
+  }
+  
+  .itmes-layout .card-item__name{
+    font-size: var(--font-small);
+    width: 13.9rem;
+
+  }
+
+  .itmes-layout .card-item__promotion{
+      font-size: 1.1em;
+  }
+
+  .itmes-layout .card-item__tag{
+    font-size: 1.2rem;
+    padding: 0.6rem 1rem;
+  }
+
+
+  /*_______________pagina item______________--*/
+
+  .collection img{
+    width: 26rem;
+    height: 26rem;
+    
+    
+  }
+
+  .collection picture {
+    width: 30rem;
+    height: 26rem;
+    
+  }
+
+  .item-collection__input-number-count{
+    border: solid var(--grey-font) 1px;  
+
+
+  }
+
+  .item-flex-layout__buttons{
+    gap: 5rem;
+  }
+  
+  .item-collection__content a.item-resumen-button{
+    font-size: var(--font-small);
+    padding-bottom: var(--spacings-8);
+    padding-top: var(--spacings-8);
+  }
+
+
+  /*___________login page________*/
+
+  
+  .login__title{
+    font-size: var(--font-medium);
+  }
+
+  .letter2{
+    font-size: var(--font-small);
+  }
+
+  .bottom_border7{
+    margin-left: 6.3rem;
+  }
+  /*________________-singup__________*/
+
+  .bottom_border3{
+    margin-left: 8.5rem;
+  }
+
+  .bottom_border4{
+    margin-left: 10rem;
+  }
+
+  .bottom_border5{
+    margin-left: 5.7rem;
+  }
+
+  .bottom_border3,
+  .bottom_border4,
+  .bottom_border5,
+  .bottom_border6{
+
+    width: 13rem;
+  }
+
+  .register__container{
+    margin-left: 4rem;
+    
+  }
+
+  .rpassword__container{
+    margin-left: var(--spacings-18);
+    gap: 0;
+  }
+
+  
+
+  /*______________-footer__________________*/
   .footer{
       padding-left: var(--spacings-36);
       padding-right: var(--spacings-36);
@@ -1241,5 +1540,7 @@ iconify-icon {
   .footer__copy{
       font-size: 1.2em;
   }
+
+  
   
 }
