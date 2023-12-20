@@ -4,42 +4,48 @@
     <nav class="navbar container">
       <!-- HEADER NAVBAR ICON START -->
       <picture class="navbar__logo">
-        <a href="../index.ejs">
+        <a href="/index">
           <img
-            src="./img/branding/logo_light_horizontal.svg"
+            src="/img/branding/logo_light_horizontal.svg"
             alt="Isologotipo de la Marca Funkoshop."
         /></a>
       </picture>
       <!-- NAVBAR ICON END -->
 
+    <!-- codigo HTML menu responsive del header-->
+    <label for="menu" class="nav__label">
+      <iconify-icon class="menu-reponsive"  icon="mingcute:menu-fill"  width="26" height="26"></iconify-icon>
+    </label>
+    <input type="checkbox" id="menu" class="nav__input">
+    
       <!-- NAVBAR MENU START -->
       <ul class="navbar__menu">
         <li class="navbar__item with-submenu">
-          <a class="navbar__link with-icon" href="../../shop/shop.ejs"
+          <a class="navbar__link with-icon" href="/shop"
             >Shop<iconify-icon icon="ion:chevron-down"></iconify-icon
           ></a>
           <ul class="submenu">
             <li class="submenu__item">
-              <a class="submenu__link" href="../../shop/shop.ejs">Funkos</a>
+              <a class="submenu__link" href="/shop">Funkos</a>
             </li>
             <li class="submenu__item">
-              <a class="submenu__link" href="../../shop/shop.ejs">Remeras</a>
+              <a class="submenu__link" href="/shop">Remeras</a>
             </li>
             <li class="submenu__item">
-              <a class="submenu__link" href="../../shop/shop.ejs">Llaveros</a>
+              <a class="submenu__link" href="/shop">Llaveros</a>
             </li>
           </ul>
         </li>
         <li class="navbar__item">
-          <a class="navbar__link" href="../../shop/contact.ejs">Contacto</a>
+          <a class="navbar__link" href="/contact">Contacto</a>
         </li>
         <li class="navbar__item">
-          <a class="navbar__link" href="../../admin/login.ejs">Login</a>
+          <a class="navbar__link" href="/auth/login">Login</a>
         </li>
         <li class="navbar__item">
-          <a class="navbar__cart" href="../../shop/cart.ejs"
+          <a class="navbar__cart" href="/shop/cart"
             ><img
-              src="./img/icons/cart-icon.svg"
+              src="/img/icons/cart-icon.svg"
               alt="Icono de carrito de compra."
           /></a>
         </li>

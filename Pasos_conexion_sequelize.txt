@@ -1,0 +1,130 @@
+### Instalar dependencia:
+npm i sequelize mysql2;
+---
+
+### Crear el archivo de conexion dentro de la carpeta src/models:
+connection.js
+
+// Requerir Sequelize
+const { Sequelize } = require('sequelize');
+
+const sequelize = new Sequelize(
+    process.env.DB_NAME,
+    process.env.DB_USER,
+    process.env.DB_PASS,
+    {
+        host: process.env.DB_HOST,
+        dialectModule: require('mysql2'),
+        dialect: 'mysql',
+    }
+);
+
+// Exportar modulo
+module.exports = sequelize;
+---
+
+### Conectarse a la BD.
+En index.js traer el modulo de la conexion:
+
+const sequelize = require('./src/models/connection');
+---
+
+### Hacer la conexion en el app.listen, junto al PORT:
+
+app.listen(PORT, async() => {
+    try {
+        await sequelize.sync();
+    } catch (error) {
+        console.log(error);
+    }
+    console.log(`http://localhost:${PORT}`)
+});
+---
+
+### Creamos modelo (intermediario):
+
+crear src/models/Product.js
+
+// Requerir tipos de datos que vamos a usar de sequelize
+const {DataTypes} = require('sequelize');
+// Requerir la conexion de sequelize
+const sequelize = require('./connection');
+// Definir un elemento (producto)
+const Product = sequelize.define('Product', {
+    nombre: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
+    precio: {
+        type: DataTypes.FLOAT,
+        allowNull: true,
+    },
+});
+
+---
+
+### Sincronizar
+
+// Sincronizacion, crear la tabla si no existe
+(async() => {
+    //await sequelize.sync({force: true}); 
+    await sequelize.sync(); 
+})();
+
+---
+
+### Requerir el modelo al buscar los productos.
+
+En productController:
+
+const model = require('../../models/Product);
+
+---
+### Llevar los productos de la BBDD a la vista.
+
+En adminController:
+
+    admin: async (req, res) => {
+        try {
+            const productos = await model.findAll();
+            //console.log(productos);
+            res.render('admin/admin', {productos}) //, layout:'layouts/adminLayout'
+        } catch (error) {
+            console.log(error);
+            res.status(500).send(error);
+        }
+    },
+
+
+En la vista/layout:
+
+<tbody>
+    <% productos.forEach(producto => { %>
+    <tr>
+        <td><%= producto.id %></td>
+        <td><%= producto.codigo %></td>
+        <td><%= producto.nombre %></td>
+        <td class="mayus"><%= producto.licencia %></td>
+        <td>
+            <picture>
+            <a href="./edit-item.html">
+                <img
+                class="edit__icon"
+                src="../../img/icons/edit_pencil.svg"
+                alt="Ícono de lápiz de edición de items."
+            /></a>
+            </picture>
+        </td>
+        <td>
+            <picture>
+            <a href="./edit-item.html">
+                <img
+                class="edit__icon"
+                src="../../img/icons/delete_trash.svg"
+                alt="Ícono de tacho de basura."
+            /></a>
+            </picture>
+        </td>
+    </tr>
+    <% }) %>
+</tbody>
