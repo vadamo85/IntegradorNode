@@ -381,8 +381,8 @@ header {
  /*------collection responsive ----*/
  
 
- .collection{
-    
+
+ .collection{   
     display: grid;
    grid-template-columns: repeat(2, 1fr);
    padding:0 var(--spacings-12);
@@ -426,7 +426,7 @@ header {
  /* ------- responsive end 768------*/
 
 
- @media screen and (min-width:425px){
+ @media screen and (max-width:435px){
 
   /* --------Banner style responsive------*/
  
@@ -448,7 +448,7 @@ header {
  .banner__link{
     margin-bottom:2rem ;
     border-radius: 30px;
-     font-size: 15px;
+   font-size: 15px;
  }
  /*------collection responsive ----*/
  
