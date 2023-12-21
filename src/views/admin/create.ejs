@@ -1,8 +1,8 @@
 <%- contentFor('body') %>
     <!-- MAIN START -->
-    <main>
+    <main class="main-create">
       <section>
-        <section class="container">
+        <section class="container-create">
           <h2 class="page__title">Crear Nuevo Item</h2>
           <!-- Renderiza los errores si existieran -->
           <% if (typeof errors != 'undefined') { %>
@@ -125,7 +125,7 @@
 
         </section>
 
-        <section class="container">
+        <section class="container-agregar">
           <div>
             <button type="submit" class="red_button">Agregar Producto</button>
             <input type="reset" value="Limpiar" class="red_button"/>
