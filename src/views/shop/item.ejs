@@ -1,23 +1,18 @@
 <%- contentFor('body') %> 
-
     <main>
       <!-- MAIN ITEM START -->
       <section class="collection container">
         <picture>
           <img
-            src="../../img/star-wars/baby-yoda-1.webp"
-            alt="Figura coleccionable Funko Pop de Grogu de la serie The Mandalorian."
+            src="/uploads/producto_<%= producto.id %>.webp"
+            alt="<%= producto.nombre %>"
           />
         </picture>
         <article class="item-collection__content">
-          <p class="item-collection__licence">Star Wars</p>
-          <h3 class="item-collection__title">Baby Yoda Blueball</h3>
-          <p class="item-collection__text">
-            Figura coleccionable de Baby Yoda (Grogu) - The Mandalorian Saga,
-            edición limitada.
-          </p>
-          <!-- MODIFICAR ESTILOS AQUÍ -->
-          <p class="item-collection__price">$ 1799,99</p>
+          <p class="item-collection__licence"><%= producto.licence %></p>
+          <h3 class="item-collection__title"><%= producto.nombre %></h3>
+          <p class="item-collection__text"><%= producto.itemDescription %></p>
+          <p class="item-collection__price"><%= producto.itemPrice %></p>
 
           <div class="item-flex-layout__buttons">
             <div class="item-collection__input">

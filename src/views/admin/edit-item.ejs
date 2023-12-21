@@ -2,125 +2,156 @@
     <!-- MAIN START -->
     <main>
       <section>
-        <section class="container">
+        <section class="container-create">
         <h2 class="page__title">Editar Item</h2>
-        <form action="" method="POST">
+        <!-- Renderiza los errores si existieran -->
+        <% if (typeof errors != 'undefined') { %>
+          <ul>
+            <% errors.forEach(error => { %>
+            <li><%= error.msg %></li>
+          <% }) %>
+          </ul>
+          <% } %>
+          
+        <form action="/admin/edit/<%= values.id %>?_method=PUT" method="POST" enctype="multipart/form-data">
           <div>
+
             <label for="category" class="letter1 spaces">Categoría:</label>
-            <select name="category" id="cat"class="spaces style" >
-              <option value="seleccionar">Seleccionar</option>
-              <option value="fuko-pop" selected>Figuras</option>
+            <select name="category" id="category" class="spaces style" value="<%= values.category %>">
+              <option value=""></option>
+              <option value="funko-pop">Figuras</option>
               <option value="remera">Remeras</option>
               <option value="llavero">Llaveros</option>
             </select>
+
             <label for="licence"class="letter1 spaces" >Licencia:</label>
-            <select name="licence" id="cat"class="spaces style" >
-              <option value="seleccionar">Seleccionar</option>
+            <select name="licence" id="licence" class="spaces style" required value="<%= values.licence %>">
+              <option value=""></option>
               <option value="harry-potter">Harry Potter</option>
-              <option value="naruto-shippuden" selected>Naruto Shippuden</option>
+              <option value="naruto-shippuden">Naruto Shippuden</option>
               <option value="pokemon">Pokemon</option>
               <option value="star-wars">Star Wars</option>
             </select>
+
           </div>
-          <div>
-            <label for="item-name" class="letter2 spaces">Nombre del producto:</label>
+
+          <div class="spaces">
+            <label for="nombre" class="letter2 spaces">Nombre del producto:</label>
             <input
               type="text"
-              id="new-item-name"
-              name="item-name"
-              placeholder="Kakashi Hatake Shippuden Saga"
+              id="nombre"
+              name="nombre"
               class="bottom_border spaces"
+              value="<%= typeof values != 'undefined' ? values.nombre : '' %>"
+              required
+              minlength="3"
             />
           </div>
+
           <div>
             <textarea
-              name="item-description"
-              id="new-item-description"
+              name="itemDescription"
+              id="itemDescription"
               cols="89"
               rows="10"
-              placeholder="Figura Funko coleccionable de Kakashi Hatake de la saga Naruto Shipudden invocando chidori."
               class="spaces"
-            ></textarea>
+              value="<%= values.itemDescription %>"></textarea>
           </div>
+
           <div>
-            <label for="sku-item" class="letter2 spaces mayus">sku:</label>
+            <label for="skuItem" class="letter2 spaces mayus">sku:</label>
             <input
-              type="text"
-              id="nnew-sku-item"
-              name="sku-producto"
-              placeholder="SSK111AB001"
-              value="NAR001012"
+              type="text" id="skuItem" name="skuItem"
               class="bottom_border1 spaces"
+              value="<%= typeof values != 'undefined' ? values.skuItem : '' %>"
+              required
             />
-            <label for="itme-price" class="letter2 spaces">Precio:</label>
+
+            <label for="itemPrice" class="letter2 spaces">Precio:</label>
             <input
               type="text"
-              id="new-item-price"
-              name="itme-price"
+              id="itemPrice"
+              name="itemPrice"
               placeholder="$ 0.000,00"
-              value="$ 1.799,00"
               class="bottom_border1 spaces"
+              value="<%= typeof values != 'undefined' ? values.itemPrice : '' %>"
+              required
+              min="1"
             />
-            <label for="item-stock" class="letter2 spaces">Stock:</label>
+
+            <label for="itemStock" class="letter2 spaces">Stock:</label>
             <input
               type="text"
-              id="new-item-stock"
-              name="item-stock"
+              id="itemStock"
+              name="itemStock"
               placeholder="0"
-              value="10"
               class="bottom_border2 spaces"
+              value="<%= typeof values != 'undefined' ? values.itemStock : '' %>"
+              required
+              min="1"
             />
           </div>
+
           <div>
             <label for="discount" class="letter2 spaces">Descuento:</label>
             <input
               type="text"
-              id="discount-item"
+              id="discount"
               name="discount"
               placeholder="0%"
-              value="%10"
               class="bottom_border2 spaces"
+              value="<%= typeof values != 'undefined' ? values.discount : '' %>"
+              min="1"
             />
+
             <label for="cuotas" class="letter2 spaces">Cuotas:</label>
-            <select name="fees" id="item-fees"class="spaces style">
+            <select name="cuotas" id="cuotas"class="spaces style">
               <option value="3">3 Cuotas sin interés</option>
               <option value="6" selected>6 Cuotas sin interés</option>
               <option value="12">12 Cuotas sin interés</option>
               <option value="24">24 Cuotas sin interés</option>
             </select>
           </div>
+
+          <!-- TODO: Obtener la ruta personalizada de la imagen -->
           <div>
-            <label for="img-item"class="letter2 spaces">Imágenes:</label>
-            <input type="file" id="new-img-item" name="img-item" multiple class="spaces"/>
-          </section>
+            <label for="imagen"class="letter2 spaces">Imágenes:</label>
+            <input type="file" id="imagen" name="imagen" multiple class="spaces"/>
+          </div>
+
+
           <section>
-            <div class="container_img">           
-          <div>
-              <img
-                src="../../img/naruto/kakashi_hatake_front.svg"
-                alt="Figura coleccionable Funko Pop de Hatake Kakashi de la saga de Naruto Shippuden."
-                class="img_edit"/>
-          </div>
-          <div>
-              <p class="img_letter border_top">Frente</p>
-            </div>
-          </div>
-          <div class="container_img">
+
+            <div class="container_img">  
               <div>
-              <img
-                src="../../img/naruto/kakashi_hatake_back.svg"
-                alt="Figura coleccionable Funko Pop de Hatake Kakashi de la saga de Naruto Shippuden en caja."
-                class="img_edit"/>
+                <img
+                  src="/uploads/producto_<%= values.id %>.jpg"
+                  alt="<%= values.nombre %>"
+                  class="img_edit"/> 
+              </div>
+              <div>
+                <p class="img_letter border_top">Frente</p>
+              </div>
+            </div>
+
+            <div class="container_img">
+              <div>
+                <img
+                  src="../../img/naruto/kakashi_hatake_back.svg"
+                  alt="Figura coleccionable Funko Pop de Hatake Kakashi de la saga de Naruto Shippuden en caja."
+                  class="img_edit"/>
               </div>
               <div>
                 <p class="img_letter border_top">Dorso</p>
+              </div>
             </div>
+
+          </section>
+
+          <div class="container-agregar">
+            <input type="submit" value="Modificar Producto" class="red_button1"/>
           </div>
-            </section>
-            <div class="container">
-              <input type="submit" value="Modificar Producto" class="red_button1"/>
-            </div>
-          </div>
+
         </form>
       </section>
     </main>

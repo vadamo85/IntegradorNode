@@ -4,6 +4,12 @@
       <!-- ASIDE START-->
       <!-- RETOCAR Y CONTROLAR/CORREGIR ESTILOS DEL ASIDE -->
       <aside class="form-shop">
+
+        <label for="menu-filtrar" class="filtrar__label"> <!-- codigo menu filtrar reponsive -->
+          FILTRAR
+        </label>
+        <input type="checkbox" id="menu-filtrar" class="filtrar__input">
+
         <form class="form-shop__content" method="POST" target="blank">
           <div class="form-shop__content-search">
             <label for="search" id="search">Buscar</label>
@@ -56,44 +62,11 @@
           </div>
         </form>
       </aside>
-      <!-- RETOCAR Y CONTROLAR/CORREGIR ESTILOS DEL ASIDE ^^^^^^-->
       <!-- ASIDE END-->
 
       <!-- MAIN CATALOGUE START -->
       <section class="itmes-layout">
-        <ul class="slider__items">
-          <li class="slider__item">
-             <%- include ("../partials/shop/card") %>
-          </li>
-          <li class="slider__item">
-            <%- include ("../partials/shop/card") %>
-         </li>
-         <li class="slider__item">
-          <%- include ("../partials/shop/card") %>
-       </li>
-        </ul>
-        <ul class="slider__items">
-          <li class="slider__item">
-            <%- include ("../partials/shop/card") %>
-          </li>
-          <li class="slider__item">
-            <%- include ("../partials/shop/card") %>
-          </li>
-          <li class="slider__item">
-            <%- include ("../partials/shop/card") %>
-          </li>
-        </ul>
-        <ul class="slider__items">
-          <li class="slider__item">
-            <%- include ("../partials/shop/card") %>
-          </li>
-          <li class="slider__item">
-            <%- include ("../partials/shop/card") %>
-          </li>
-          <li class="slider__item">
-            <%- include ("../partials/shop/card") %>
-          </li>
-        </ul>
+        <%- include('../partials/shop/card') %>
       </section>
       <!-- MAIN CATALOGUE END -->
 
